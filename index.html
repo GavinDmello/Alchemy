@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <h1>Check the server after calling this file</h1>
+    <div id="future"></div>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect('http://localhost:4200');
+    socket.on('connect', function(data) {
+        socket.emit('location', 'Hello World from client');
+    });
+    socket.on('location',function(data){
+        console.log(data);
+    })
+    </script>
+</body>
+
+</html>
